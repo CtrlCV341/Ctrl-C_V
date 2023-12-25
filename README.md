@@ -1,6 +1,6 @@
-# Ctrl-C_V
-Description
-GTAsust
+# Ctrl-C_V<br>
+Description<br>
+GTAsust<br>
 The proposed project is a game set within the confines of the SUST campus, designed to enable a vehicle's movement from one location to another based on user commands. The game initiates with the representation of a vehicle denoted by the symbol '@'. Users are tasked with maneuvering this vehicle across the campus to reach a designated destination using directional commands: UP, DOWN, LEFT, and RIGHT, facilitated by the arrow keys on the keyboard. The game concludes upon the successful arrival of the vehicle at the user's chosen destination.<br>
 Gameplay:<br>
 The central element of the game is the '@' symbol, symbolising the vehicle. Users begin at a predefined location, specifically the SUST Gate, and are allocated four moves to navigate the vehicle. The four directional movements are associated with the arrow keys of the keyboard: UP for upward movement, DOWN for downward movement, LEFT for leftward movement, and RIGHT for rightward movement. With every input, the vehicle advances by one unit in the specified direction. The game concludes once the vehicle reaches the desired location within the campus.<br>
