@@ -48,8 +48,8 @@ int main(){
     cout<<"2.A-building"<<endl;
     cout<<"3.B-building"<<endl;
     cout<<"You're Answer: ";
-    int n;
-    cin>>n;
+    int userDest;
+    cin>>userDest;
 
     switch (userDest)
     {
