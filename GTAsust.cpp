@@ -652,7 +652,8 @@ void mapSUST(){
 }
 
 int main(){
-    position playerPos={2,2};
+    system("mode con: lines=700 cols=700");
+    Position playerPos = {61, 4};
     position destPos;
     CONSOLE_CURSOR_INFO cursorInfo;
     GetConsoleCursorInfo(consoleHandle, &cursorInfo);
