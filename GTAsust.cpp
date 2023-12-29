@@ -701,9 +701,56 @@ void mapSUST()
         else
             cout << ' ';
     }
+    // gotoxy(82,4);   //s
+    // cout<<"*";
+    gotoxy(33,12);      //o
+    cout<<"*";
+    gotoxy(33,21);      //m     
+    cout<<"*";
+    // gotoxy(77,30);      //cafe
+    // cout<<"*";
+    // gotoxy(87,30);  //c
+    // cout<<"*";
+    gotoxy(99,30);  //e
+    cout<<"*";
+    // gotoxy(36,40);      //d
+    // cout<<"*";
+    gotoxy(95,43);      //a
+    cout<<"*";
+    // gotoxy(51,49);      //L
+    // cout<<"*";
+    // gotoxy(16,59);      //h
+    // cout<<"*";
+    // gotoxy(51,68);      //i
+    // cout<<"*";
+    gotoxy(62,80);      //maingate
+    cout<<"*";
 }
 bool obstacle(const position &newPos)
 {
+    loop(i, 60, 130){ /// shahporan hall road
+        if(newPos.x>=i&&newPos.y==3)return true;
+    }
+    if((newPos.x==60||newPos.x==129)&&newPos.y==4)return true;  /// shahporan hall
+    loop(i, 63, 130){    /// shahporan hall
+        if(newPos.x>=i&&newPos.y==5)return true;
+    }
+    loop(i,5,81){   /// two roads
+        if((newPos.x==60||newPos.x==64)&&newPos.y==i&&(newPos.y!=12||newPos.x==64)&&(newPos.y!=21||newPos.x==64)&&(newPos.y!=30||newPos.x==60)&&(newPos.y!=40||newPos.x==64)&&(newPos.y!=43||newPos.x==60)&&(newPos.y!=49||newPos.x==64)&&(newPos.y!=68||newPos.x==64)&&(newPos.y>=63&&newPos.y<=54))return true;
+    }
+    loop(i, 0, 61){     /// auditorium,minar,D-building,library,IICT,golchottor
+        if(newPos.x==i&&(newPos.y==11||newPos.y==13||newPos.y==20||newPos.y==22||newPos.y==39||newPos.y==41||newPos.y==48||newPos.y==50||newPos.y==67||newPos.y==69||newPos.y==54||newPos.y==63))return true;
+    }
+    loop(i,64,100){     // C-building,A-building, gol chottor
+        if(newPos.x==i&&(newPos.y==29||newPos.y==31||newPos.y==42||newPos.y==44||newPos.y==54||newPos.y==63)){return true;}
+    }
+    loop(i,54,64){      // golchottor
+        if(i==59)continue;
+        if((newPos.x==50||newPos.x==74)&&(newPos.y==i))return true;
+    }
+    loop(i,0,51){   //hall
+        if(newPos.x==i&&(newPos.y==58||newPos.y==60))return true;
+    }
     return false;
 }
 
@@ -806,4 +853,5 @@ int main()
 
     }
     system("pause");
+    
 }
