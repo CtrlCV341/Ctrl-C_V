@@ -22,13 +22,13 @@ void gotoxy(int x, int y)
     coord.Y = y;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord); // copied, used to set the position of the cursor
 }
-void disAvator(const position &playerPos, const position &destPos)
+void disAvator(const position &playerPos,string s)
 {
     gotoxy(playerPos.x, playerPos.y);
-    cout << "@";
+    cout << s;
 
-    gotoxy(destPos.x, destPos.y);
-    cout << "()";
+    //gotoxy(destPos.x, destPos.y);
+    //cout << "()";
 }
 void border()
 {
@@ -705,7 +705,7 @@ void mapSUST()
     // cout<<"*";
     gotoxy(33,12);      //o
     cout<<"*";
-    gotoxy(33,21);      //m     
+    gotoxy(33,21);      //m
     cout<<"*";
     // gotoxy(77,30);      //cafe
     // cout<<"*";
@@ -745,12 +745,13 @@ bool obstacle(const position &newPos)
         if(newPos.x==i&&(newPos.y==29||newPos.y==31||newPos.y==42||newPos.y==44||newPos.y==54||newPos.y==63)){return true;}
     }
     loop(i,54,64){      // golchottor
-        if(i==59)continue;
-        if((newPos.x==50||newPos.x==74)&&(newPos.y==i))return true;
+        //if(i==59)continue;
+        if((newPos.x==50||newPos.x==74)&&(newPos.y==i)&&(newPos.y!=59||newPos.x==74))return true;
     }
     loop(i,0,51){   //hall
         if(newPos.x==i&&(newPos.y==58||newPos.y==60))return true;
     }
+    if((newPos.x==33&&newPos.y==12)||(newPos.x==34&&newPos.y==21)||(newPos.x==99&&newPos.y==30)||(newPos.x==35&&newPos.y==40)||(newPos.x==95&&newPos.y==43)||(newPos.x==50&&newPos.y==49)||(newPos.x==15&&newPos.y==59)||(newPos.x==50&&newPos.y==68)||(newPos.x==62&&newPos.y==81))return true;
     return false;
 }
 
@@ -764,7 +765,7 @@ bool finalDest(const position &playerPos, const position &destPos)
 int main()
 {
     system("mode con: lines=700 cols=700");
-    position playerPos = {61, 4};
+    position playerPos = {62,80};
     position destPos;
 
     HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -774,7 +775,7 @@ int main()
     cursorInfo.bVisible = false;
     SetConsoleCursorInfo(consoleHandle, &cursorInfo);
     gotoxy(width / 2, height / 2);
-    cout << "                     Hey! Welcome to GTAsust game app" << endl;
+    cout << "Hey! Welcome to GTAsust game app" << endl;
     cout << "**********************************************************************************" << endl;
     cout << "This game is about Shahjalal University of Science and Technology(SUST) where you" << endl;
     cout << "can travel at any point of the university and reach to your desired destination" << endl;
@@ -784,9 +785,18 @@ int main()
 
     system("cls");
     cout << "Where do you want to go?" << endl;
-    cout << "1.IICT" << endl;
-    cout << "2.A-building" << endl;
-    cout << "3.B-building" << endl;
+    cout << "1.Shahporan Hall" << endl;
+    cout << "2.Auditorium" << endl;
+    cout << "3.Shahid Minar" << endl;
+    cout << "4.B-building" << endl;
+    cout << "5.Cafeteria" << endl;
+    cout << "6.C-building" << endl;
+    cout << "7.E-building" << endl;
+    cout << "8.D-building" << endl;
+    cout << "9.A-building" << endl;
+    cout << "10.Central Library" << endl;
+    cout << "11.Ladies Hall" << endl;
+    cout << "12.IICT" << endl;
     cout << "You're Answer: ";
     int userDest;
     cin >> userDest;
@@ -794,21 +804,50 @@ int main()
     switch (userDest)
     {
     case 1:
-        destPos = {20, height - 2}; // random
+        destPos = {80,4}; // s
         break;
     case 2:
-        destPos = {width - 3, 5}; // random
+        destPos = {34,12}; // o
         break;
     case 3:
-        destPos = {width / 2, height / 2}; // random
+        destPos = {34,21}; // m
+        break;
+    case 4:
+        destPos = {62,25}; // b
+        break;
+    case 5:
+        destPos = {77,30}; // cafe
+        break;
+    case 6:
+        destPos = {87,30}; // c
+        break;
+    case 7:
+        destPos = {94,30}; // e
+        break;
+    case 8:
+        destPos = {36,40}; // d
+        break;
+    case 9:
+        destPos = {90,43}; // a
+        break;
+    case 10:
+        destPos = {51,49}; // L
+        break;
+    case 11:
+        destPos = {16,59}; // h
+        break;
+    case 12:
+        destPos = {51,68}; // i
         break;
     default:
+        cout<<"Does Not Exist"<<endl;
         break;
     }
     system("cls");
     border();
     mapSUST();
-    disAvator(playerPos, destPos);
+    disAvator(playerPos,"@");
+    if(abs(playerPos.y-destPos.y)<=49)disAvator(destPos,"()");
     while (true)
     {
 
@@ -844,14 +883,22 @@ int main()
             cout << " ";
 
             playerPos = newPos;
-
-            disAvator(playerPos, destPos);
+            if(playerPos.y<=49){gotoxy(0,0);cout<<"";}
+            //if(playerPos.y>=50){gotoxy(0,80);cout<<"";}
+            //if(playerPos.y>)
+            disAvator(playerPos,"@");
+            if(abs(playerPos.y-destPos.y)<=45)disAvator(destPos,"()");
         }
 
         if (finalDest(playerPos, destPos))
             break;
 
     }
+    system("cls");
+    cout<<"Congrats! you've reached your destination"<<endl;
+    loop(i,0,50){
+        loop(j,0,40 )cout<<"BLAH ";
+        eline
+    }
     system("pause");
-    
 }
